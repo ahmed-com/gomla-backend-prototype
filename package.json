@@ -1,0 +1,16 @@
+{
+  "name": "gomla-backend-prototype",
+  "version": "1.0.0",
+  "description": "",
+  "main": "init.js",
+  "scripts": {
+    "init": "node init.js",
+    "serve": "json-server --watch db.json"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "faker": "^5.5.3"
+  }
+}

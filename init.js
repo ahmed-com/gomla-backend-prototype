@@ -52,16 +52,19 @@ function generateRandomDeal() {
 function generateSchema() {
     const profile = generateRandomUser();
     const users = [];
+    const partners = [];
     const deals = [];
 
     for (let i = 0; i < 12; i++) {
         users.push(generateRandomUser());
+        partners.push(generateRandomUser());
         deals.push(generateRandomDeal());
     }
 
     return {
         profile,
         users,
+        partners,
         deals
     }
 }

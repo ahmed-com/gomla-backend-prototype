@@ -36,6 +36,7 @@ function generateRandomDeal() {
         id: faker.datatype.uuid(),
         title: faker.datatype.string(),
         subject: faker.datatype.string(),
+        type:  faker.datatype.string(),
         location: faker.datatype.string(),
         expected_vendor: faker.datatype.string(),
         expected_price: faker.datatype.string(),

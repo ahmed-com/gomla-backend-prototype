@@ -33,9 +33,15 @@ function generateRandomUser() {
 function getRandomElements(arr) {
     const elements_length = Math.floor(Math.random() * arr.length);
     const elements = [];
+    const usedIndexes = new Set();
 
     for (let i = 0; i < elements_length; i++) {
-        const index = Math.floor(Math.random() * elements_length);
+        let index;
+
+        do{
+            index = Math.floor(Math.random() * arr.length);
+        }while(usedIndexes.has(index));
+
         elements.push(arr[index]);
     }
     return elements;

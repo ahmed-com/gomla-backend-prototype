@@ -29,6 +29,18 @@ function generateRandomUser() {
     }
 }
 
+
+function getRandomElements(arr) {
+    const elements_length = Math.floor(Math.random() * arr.length);
+    const elements = [];
+
+    for (let i = 0; i < elements_length; i++) {
+        const index = Math.floor(Math.random() * elements_length);
+        elements.push(arr[index]);
+    }
+    return elements;
+}
+
 function generateRandomDeal() {
     const faker = getDataSource();
 
@@ -56,10 +68,28 @@ function generateSchema() {
     const partners = [];
     const deals = [];
 
+    const deals_copy = [];
+    const partners_copy = [];
+
     for (let i = 0; i < 12; i++) {
         users.push(generateRandomUser());
-        partners.push(generateRandomUser());
-        deals.push(generateRandomDeal());
+
+        const partner = generateRandomUser();
+        const deal = generateRandomDeal();
+
+        const partner_copy = Object.assign({},partner);
+        const deal_copy = Object.assign({},deal);
+
+        partners.push(partner);
+        deals.push(deal);
+        
+        partners_copy.push(partner_copy);
+        deals_copy.push(deal_copy);
+    }
+
+    for (let i = 0; i < 12; i++) {
+        deals[i].partners = getRandomElements(partners_copy);
+        partners[i].deals = getRandomElements(deals_copy);
     }
 
     return {

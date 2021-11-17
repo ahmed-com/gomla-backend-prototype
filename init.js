@@ -43,6 +43,8 @@ function getRandomElements(arr) {
         }while(usedIndexes.has(index));
 
         elements.push(arr[index]);
+
+        usedIndexes.add(index);
     }
     return elements;
 }

@@ -25,7 +25,8 @@ function generateRandomUser() {
         name : faker.name.findName(),
         email : faker.internet.email(),
         password : faker.internet.password(),
-        zipCode : faker.address.zipCode()
+        zipCode : faker.address.zipCode(),
+        joinStatus: Math.floor(Math.random() * 7)
     }
 }
 
@@ -97,6 +98,7 @@ function generateSchema() {
 
     for (let i = 0; i < 12; i++) {
         deals[i].partners = getRandomElements(partners_copy);
+        deals[i].partners.push(profile);
         partners[i].deals = getRandomElements(deals_copy);
     }
 

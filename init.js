@@ -31,6 +31,15 @@ function generateRandomUser() {
     }
 }
 
+function imageSources() {
+    const imgs = [];
+    for (let n = 1; n < 10; n++) {
+        imgs.push(
+            `https://picsum.photos/500/300?image=${n * 5 + 10}`
+        );
+    }
+    return imgs;
+}
 
 function getRandomElements(arr) {
     const elements_length = Math.floor(Math.random() * arr.length);
@@ -99,6 +108,7 @@ function generateSchema() {
 
     for (let i = 0; i < 12; i++) {
         deals[i].partners = getRandomElements(partners_copy);
+        deals[i].imgs = getRandomElements(imageSources());
         deals[i].partners.push(profile);
         partners[i].deals = getRandomElements(deals_copy);
     }

@@ -27,7 +27,8 @@ function generateRandomUser() {
         password : faker.internet.password(),
         zipCode : faker.address.zipCode(),
         joinStatus: Math.floor(Math.random() * 7),
-        joinDate: optional(faker.datatype.datetime())
+        joinDate: optional(faker.datatype.datetime()),
+        avatar: getRandomAvatar()
     }
 }
 
@@ -39,6 +40,11 @@ function imageSources() {
         );
     }
     return imgs;
+}
+
+function getRandomAvatar() {
+    const randNum = Math.ceil(Math.random() * 5);
+    return `https://cdn.vuetifyjs.com/images/lists/${randNum}.jpg`
 }
 
 function getRandomElements(arr) {

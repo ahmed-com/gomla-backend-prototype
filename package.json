@@ -5,7 +5,7 @@
   "main": "init.js",
   "scripts": {
     "init": "node init.js",
-    "serve": "json-server --watch db.json"
+    "start": "json-server --watch data/db.json"
   },
   "keywords": [],
   "author": "",

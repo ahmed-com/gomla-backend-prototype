@@ -129,6 +129,6 @@ function generateSchema() {
 
 function storeSchema(schema) {
     const jsonSchema = JSON.stringify(schema)
-    fs.writeFileSync('./db.json',jsonSchema);
+    fs.writeFileSync('./data/db.json',jsonSchema);
 }
 

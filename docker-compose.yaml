@@ -5,9 +5,9 @@ services:
   json_server:
     build: .
     volumes:
-      - data:/app/data
-    ports:
-      - '3000:3000'
+      - ./data:/app/data
+    # ports:
+    #   - '3000:3000'
 
-volumes:
-  data:
+# volumes:
+#   data:

@@ -1,6 +1,7 @@
 const fs = require('fs')
 const faker_en = require('faker/locale/en');
 const faker_ar = require('faker/locale/ar');
+const currencies = Object.keys(require("./currencies.json"));
 
 (function main() {
     const schema = generateSchema();
@@ -43,8 +44,15 @@ function imageSources() {
 }
 
 function getRandomAvatar() {
-    const randNum = Math.ceil(Math.random() * 5);
-    return `https://cdn.vuetifyjs.com/images/lists/${randNum}.jpg`
+    const name = getDataSource().name.findName();
+    // const randNum = Math.ceil(Math.random() * 5);
+    // return `https://cdn.vuetifyjs.com/images/lists/${randNum}.jpg`
+    return `https://avatars.dicebear.com/api/initials/${name}.svg`;
+}
+
+function getRandomCurrency() {
+    const index = Math.floor(Math.random() * currencies.length)
+    return currencies[index];
 }
 
 function getRandomElements(arr) {
@@ -76,8 +84,8 @@ function generateRandomDeal() {
         type:  faker.datatype.string(),
         location: faker.datatype.string(),
         expected_vendor: faker.datatype.string(),
-        expected_price: faker.datatype.string(),
-        currency: faker.datatype.string(),
+        expected_price: faker.datatype.number(10000),
+        currency: getRandomCurrency(),
         notice: optional(faker.datatype.string()),
         label: optional(faker.datatype.string()),
         rating: optional(faker.datatype.string()),

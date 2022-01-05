@@ -80,9 +80,12 @@ function generateRandomDeal() {
     return {
         id: faker.datatype.uuid(),
         title: faker.datatype.string(),
-        subject: faker.datatype.string(),
+        description: faker.datatype.string(),
         type:  faker.datatype.string(),
-        location: faker.datatype.string(),
+        location: {
+            lat: faker.datatype.number({min:30, max: 32}),
+            lng: faker.datatype.number({min:30, max: 32}),
+        },
         expected_vendor: faker.datatype.string(),
         expected_price: faker.datatype.number(10000),
         currency: getRandomCurrency(),

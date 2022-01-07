@@ -27,7 +27,7 @@ function generateRandomUser() {
         email : faker.internet.email(),
         password : faker.internet.password(),
         zipCode : faker.address.zipCode(),
-        joinStatus: Math.floor(Math.random() * 7),
+        joinStatus: Math.floor(Math.random() * 5),
         joinDate: optional(faker.datatype.datetime()),
         avatar: getRandomAvatar()
     }

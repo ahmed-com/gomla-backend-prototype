@@ -29,7 +29,7 @@ function generateRandomUser() {
         zipCode : faker.address.zipCode(),
         joinStatus: Math.floor(Math.random() * 5),
         joinDate: optional(faker.datatype.datetime()),
-        avatar: getRandomAvatar()
+        avatar: optional(getRandomAvatar())
     }
 }
 
@@ -44,10 +44,10 @@ function imageSources() {
 }
 
 function getRandomAvatar() {
-    const name = getDataSource().name.findName();
-    // const randNum = Math.ceil(Math.random() * 5);
-    // return `https://cdn.vuetifyjs.com/images/lists/${randNum}.jpg`
-    return `https://avatars.dicebear.com/api/initials/${name}.svg`;
+    // const name = getDataSource().name.findName();
+    // return `https://avatars.dicebear.com/api/initials/${name}.svg?background=%23005f6a`;
+    const randNum = Math.ceil(Math.random() * 5);
+    return `https://cdn.vuetifyjs.com/images/lists/${randNum}.jpg`
 }
 
 function getRandomCurrency() {

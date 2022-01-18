@@ -86,6 +86,7 @@ function generateRandomDeal() {
             lat: faker.datatype.number({min:30, max: 32}),
             lng: faker.datatype.number({min:30, max: 32}),
         },
+        imgs: getRandomElements(imageSources()),
         expected_vendor: faker.datatype.string(),
         expected_price: faker.datatype.number(10000),
         currency: getRandomCurrency(),
@@ -125,8 +126,9 @@ function generateSchema() {
 
     for (let i = 0; i < 12; i++) {
         deals[i].partners = getRandomElements(partners_copy);
-        deals[i].imgs = getRandomElements(imageSources());
         deals[i].partners.push(profile);
+        const coinFlip = Math.round(Math.random());
+        deals[i].owner = coinFlip ? profile : generateRandomUser();
         partners[i].deals = getRandomElements(deals_copy);
     }
 

@@ -74,6 +74,19 @@ function getRandomElements(arr) {
     return elements;
 }
 
+function getProfile() {
+    return {
+        name: 'ahmed grwa',
+        email: 'test@test.test',
+        password: '123654789',
+        id: 3,
+        zipCode : faker.address.zipCode(),
+        joinStatus: Math.floor(Math.random() * 5),
+        joinDate: optional(faker.datatype.datetime()),
+        avatar: optional(getRandomAvatar())
+    }
+}
+
 function generateRandomDeal() {
     const faker = getDataSource();
 
@@ -100,7 +113,7 @@ function generateRandomDeal() {
 }
 
 function generateSchema() {
-    const profile = generateRandomUser();
+    const profile = getProfile();
     const users = [];
     const partners = [];
     const deals = [];

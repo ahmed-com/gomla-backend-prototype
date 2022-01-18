@@ -75,6 +75,8 @@ function getRandomElements(arr) {
 }
 
 function getProfile() {
+    const faker = getDataSource();
+    
     return {
         name: 'ahmed grwa',
         email: 'test@test.test',

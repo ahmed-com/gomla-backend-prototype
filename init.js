@@ -74,6 +74,11 @@ function getRandomElements(arr) {
     return elements;
 }
 
+function getRandomElement(arr) {
+    const index = Math.floor(Math.random() * arr.length);
+    return arr[index];
+}
+
 function getProfile() {
     const faker = getDataSource();
     
@@ -120,7 +125,6 @@ function generateSchema() {
     const partners = [];
     const deals = [];
 
-    const deals_copy = [];
     const partners_copy = [];
 
     for (let i = 0; i < 12; i++) {
@@ -130,21 +134,23 @@ function generateSchema() {
         const deal = generateRandomDeal();
 
         const partner_copy = Object.assign({},partner);
-        const deal_copy = Object.assign({},deal);
 
         partners.push(partner);
         deals.push(deal);
         
         partners_copy.push(partner_copy);
-        deals_copy.push(deal_copy);
     }
 
     for (let i = 0; i < 12; i++) {
+        const coinFlip = Math.round(Math.random()); 
+        deals[i].owner = coinFlip ? profile : getRandomElement(partners_copy); 
         deals[i].partners = getRandomElements(partners_copy);
         deals[i].partners.push(profile);
-        const coinFlip = Math.round(Math.random());
-        deals[i].owner = coinFlip ? profile : generateRandomUser();
-        partners[i].deals = getRandomElements(deals_copy);
+        deals[i].membersCount = deals[i].partners.length;
+    }
+
+    for (let i = 0; i < 12; i++) {
+        partners[i].deals = getRandomElements(deals);
     }
 
     return {
